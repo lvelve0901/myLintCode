@@ -8,18 +8,25 @@ public class MinimumSizeSubarraySum {
 		
 		int ans = Integer.MAX_VALUE;  
 		int cur = 0; // record current sum
+		int i = 0, j = 1;
 		
 		cur = cur + nums[0]; // initialize the current sum
-		for (int i = 0, j = 1; i < nums.length; i++) { // back pointer start at zero, front pointer start at one
+		
+		for (i = 0, j = 1; i < nums.length; i++) { // back pointer start at zero, front pointer start at one
 			
 			
-			while ((cur < s) & (j < nums.length)) {
+			while (j < nums.length) {
 				
-				cur = cur + nums[j++]; // first cur += nums[j] then j = j + 1
+				if (cur < s) {
+					cur = cur + nums[j++]; // first cur += nums[j] then j = j + 1
+				}
 				
+				else {
+					break;
+				}
 			}
 			
-			if (cur >= s) {
+			if (cur >= s) { // max have this because we are comparing the minimal and we can truncating the front
 				ans = Math.min(ans, j-i);
 			}
 			cur = cur - nums[i]; // remove the first one when move to the next loop

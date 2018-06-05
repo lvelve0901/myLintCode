@@ -20,7 +20,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 			ans += 1;
 		}
 		
-		unique.add(s.charAt(i));
+		unique.add(s.charAt(0));
 		for (i = 0; i < s.length(); i++) {
 			while( j < s.length()) {
 				if (!unique.contains(s.charAt(j))) {
@@ -30,8 +30,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
 				}
 				else break;
 			}
-			
-			System.out.println(s.substring(i, j));
 			
 			ans = Math.max(cur, ans);
 			unique.remove(s.charAt(i));  // remove the first element from the unique hashset
