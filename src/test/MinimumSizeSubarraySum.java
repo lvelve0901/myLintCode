@@ -1,30 +1,28 @@
 package test;
 
-import java.util.Arrays;
-
 public class MinimumSizeSubarraySum {
 	
 	public static int minimumSize(int[] nums, int s) {
 		
-		int len = -1;
-		int ans = Integer.MAX_VALUE;
-		int cur = 0;
+		// O(n) because j doesn't need to traceback to i+1 everytime
 		
-		cur = cur + nums[0];
-		for (int i = 0, j = 1; i < nums.length; i++) {
+		int ans = Integer.MAX_VALUE;  
+		int cur = 0; // record current sum
+		
+		cur = cur + nums[0]; // initialize the current sum
+		for (int i = 0, j = 1; i < nums.length; i++) { // back pointer start at zero, front pointer start at one
+			
 			
 			while ((cur < s) & (j < nums.length)) {
 				
-				cur = cur + nums[j++];
+				cur = cur + nums[j++]; // first cur += nums[j] then j = j + 1
 				
 			}
-			System.out.println("break");
-			System.out.println(Arrays.toString(Arrays.copyOfRange(nums, i, j)));
 			
 			if (cur >= s) {
 				ans = Math.min(ans, j-i);
 			}
-			cur = cur - nums[i];
+			cur = cur - nums[i]; // remove the first one when move to the next loop
 			
 		}
 		
