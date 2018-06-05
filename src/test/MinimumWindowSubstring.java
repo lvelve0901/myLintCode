@@ -58,7 +58,7 @@ public class MinimumWindowSubstring {
 				}
 			}
 			
-			if (valid(source_hash,target_hash)) { // must check if valid since we are truncating the front during the loop and we have to make sure to update the valid one
+			if (valid(source_hash,target_hash)) { // must check if valid since we are truncating the front during the loop and we have to make sure to update the valid one
 				if (minlen > j - i) {
 					minlen = j - i;
 					ans = source.substring(i, j);
